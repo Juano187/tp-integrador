@@ -35,5 +35,10 @@ public abstract class Arbol<E extends Comparable<E>> {
 
 	public abstract boolean esLleno();
 
+	public int cuentaNodosDeNivel2(int nivel, int i) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 	
 }
