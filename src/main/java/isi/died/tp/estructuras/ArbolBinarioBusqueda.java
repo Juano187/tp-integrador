@@ -107,14 +107,16 @@ public class ArbolBinarioBusqueda<E extends Comparable<E>> extends Arbol<E> {
 	}
 
 	@Override
-	public int profundidad() {
-		if( this.izquierdo.valor == null && this.derecho.valor == null) {
+	public int profundidad(){
+
+		if((this.izquierdo.esVacio()) && (this.derecho.esVacio()))
 			return 0;
-		}else
-		{
-			return 1 + Math.max(this.izquierdo.profundidad(), this.derecho.profundidad());
+		else{
+			return Math.max(this.izquierdo.profundidad(), this.derecho.profundidad())+1;
 		}
+
 	}
+	
 
 	@Override
 	public int cuentaNodosDeNivel(int nivel) {
@@ -157,6 +159,22 @@ public class ArbolBinarioBusqueda<E extends Comparable<E>> extends Arbol<E> {
 		// TODO 1.e
 		return (cuentaNodosDeNivel(profundidad()))==(Math.pow(2,profundidad()));
 	}
-
+	
+	@Override
+	public List<E> rango(E a  , E b){
+		List<E> lista = new ArrayList<E>();
+	
+		lista.addAll(this.izquierdo.rango(a,b));
+		
+		if(this.valor.compareTo(a)>=0  && this.valor.compareTo(b)<=0 ) {
+		
+			lista.add(this.valor);}
+		
+		lista.addAll(this.derecho.rango(a,b));
+		
+		return lista;
+		
+	
+	}
 
 }

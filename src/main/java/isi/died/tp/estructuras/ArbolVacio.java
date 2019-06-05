@@ -13,7 +13,12 @@ public class ArbolVacio<E extends Comparable<E>> extends Arbol<E> {
 	public List<E> preOrden() {
 		return new ArrayList<E>();
 	}
-
+	
+	@Override 
+	public List<E> rango(E a, E b){
+		return new ArrayList<E>();
+	}
+	
 	@Override
 	public List<E> inOrden() {
 		return new ArrayList<E>();

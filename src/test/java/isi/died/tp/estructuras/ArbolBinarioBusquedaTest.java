@@ -7,78 +7,85 @@ import org.junit.Test;
 
 public class ArbolBinarioBusquedaTest {
 
-	private ArbolBinarioBusqueda<Integer> abblleno;
-	private ArbolBinarioBusqueda<Integer> abblleno2;
-	private ArbolBinarioBusqueda<Integer> abbCompleto;
-	private ArbolBinarioBusqueda<Integer> abbraiz;
+	private ArbolBinarioBusqueda<Integer> abb1;
 	private ArbolBinarioBusqueda<Integer> abb2;
-	
+	private ArbolBinarioBusqueda<Integer> abb3;
+
 	
 	@Before
 	public void preTest() {
-		abblleno = new ArbolBinarioBusqueda<Integer>(40);
-		abblleno.agregar(34);
-		abblleno.agregar(420);
-		abblleno.agregar(65);
-		abblleno.agregar(90);
-		abblleno.agregar(12);
-		abblleno.agregar(11);
+		//No Lleno, no completo
+		abb1 = new ArbolBinarioBusqueda<Integer>(40);
+		abb1.agregar(34);
+		abb1.agregar(420);
+		abb1.agregar(65);
+		abb1.agregar(90);
+		abb1.agregar(12);
+		abb1.agregar(11);
+
+		//Lleno y Completo
+		abb2 = new ArbolBinarioBusqueda<Integer>(7);
+		abb2.agregar(2);
+		abb2.agregar(1);
+		abb2.agregar(5);
+		abb2.agregar(9);
+		abb2.agregar(12);
+		abb2.agregar(8);
+
+		//No Lleno y Completo
+		abb3 = new ArbolBinarioBusqueda<Integer>(7);
+		abb3.agregar(2);
+		abb3.agregar(1);
+		abb3.agregar(5);
+		abb3.agregar(9);
+	
 		
-		abbCompleto = new ArbolBinarioBusqueda<Integer>(5);
-		abbCompleto.agregar(34);
-		abbCompleto.agregar(420);
-		abbCompleto.agregar(65);
-		abbCompleto.agregar(90);
-		
-		abblleno2 = new ArbolBinarioBusqueda<Integer>(40);
-		abblleno2.agregar(34);
-		abblleno2.agregar(420);
-		abblleno2.agregar(65);
-		abblleno2.agregar(90);
-		abblleno2.agregar(12);
-		abblleno2.agregar(11);
-		
-		abbraiz = new ArbolBinarioBusqueda<Integer>(3);
-		abb2 = new ArbolBinarioBusqueda<Integer>(40);
-		abb2.agregar(34);
-		abb2.agregar(4);
+
 	}
 	
 	@Test
 	public void testContiene() {
-		Boolean obtenido = abblleno.contiene(40);
+		Boolean obtenido = abb1.contiene(40);
 		assertTrue(obtenido);
-		assertFalse(abblleno.contiene(3));
+		assertFalse(abb1.contiene(3));
 	}
 
 	@Test
 	public void testEqualsArbolOfE() {
 		
-		assertTrue(abblleno.equals(abblleno2));
-		assertFalse(abblleno.equals(abbCompleto));
+		assertTrue(abb2.equals(abb2));
+		assertFalse(abb2.equals(abb3));
 	}
 
 	@Test
 	public void testProfundidad() {
 		
-		assertEquals(0,abbraiz.profundidad() );
+		assertEquals(2,abb2.profundidad());
 	
 		
 	}
 
 	@Test
 	public void testCuentaNodosDeNivel() {
-		assertEquals(1,abbraiz.cuentaNodosDeNivel(0));
+
+		assertEquals(4,abb2.cuentaNodosDeNivel(2));
+		assertEquals(2,abb2.cuentaNodosDeNivel(3));
+
 	}
 
 	@Test
 	public void testEsCompleto() {
-		assertTrue(abbraiz.esCompleto());
+		assertFalse(abb1.esCompleto());
+		assertTrue(abb2.esCompleto());
+		assertTrue(abb3.esCompleto());
 	}
 
 	@Test
 	public void testEsLleno() {
-	 assertTrue(abbraiz.esLleno());
+		
+	 	assertFalse(abb1.esLleno());
+		assertTrue(abb2.esLleno());
+		assertFalse(abb3.esLleno());
 	
 	}
 

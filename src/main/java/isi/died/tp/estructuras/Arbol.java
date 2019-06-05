@@ -6,6 +6,8 @@ public abstract class Arbol<E extends Comparable<E>> {
 
 
 	protected E valor;
+	
+	public abstract List<E> rango(E a, E b);
 
 	public abstract List<E> preOrden();
 
